@@ -50,13 +50,13 @@ int find_greatest_common_divisor(int first_number, int second_number)
     if (first_number == 0) return second_number;
     if (second_number == 0) return first_number;
         
-    int trailing_zero_count_of_first_number = count_trailing_zeroes(first_number);
-    int trailing_zero_count_of_second_number = count_trailing_zeroes(second_number);
+    int first_number_trailing_zero_count = count_trailing_zeroes(first_number);
+    int second_number_trailing_zero_count = count_trailing_zeroes(second_number);
     
-    first_number >>= trailing_zero_count_of_first_number;
-    second_number >>= trailing_zero_count_of_second_number;
+    first_number >>= first_number_trailing_zero_count;
+    second_number >>= second_number_trailing_zero_count;
     
-    int common_binary_divisor = find_lesser_of_twain(trailing_zero_count_of_first_number, trailing_zero_count_of_second_number);
+    int common_binary_divisor = find_lesser_of_twain(first_number_trailing_zero_count, second_number_trailing_zero_count);
     
     while (first_number)
     {
